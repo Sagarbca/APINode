@@ -17,17 +17,15 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-//this is the ending of cors enabled
-//declaring the connections
-require('./config/db');
-//declared all the models
-require('./models/Person');
-require('./models/Article');
-require("./models/User");
-require("./models/Book");
-//address of the controller
+//define the controller path
 app.use(require('./controller'));
-//universal url
+
+
+//universal Url
+app.get('*', function(req, res){
+   res.send('Sorry, this is an invalid URL.');
+});
+
 
 var server = app.listen(8080, function(){
     var host = server.address().address

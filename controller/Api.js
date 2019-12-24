@@ -7,8 +7,6 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require("../models/User");
 
-
-
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
         res.json({success: false, msg: 'Please pass username and password.'});
